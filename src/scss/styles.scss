@@ -1,0 +1,18 @@
+// Import all of Bootstrap's CSS
+@import 'bootstrap/scss/bootstrap';
+
+.features-body {
+  max-height: 400px;
+}
+
+.project-container {
+  overflow: hidden;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.task-card {
+  max-width: 250px;
+}
