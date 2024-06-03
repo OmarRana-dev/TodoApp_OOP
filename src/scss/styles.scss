@@ -1,18 +1,24 @@
 // Import all of Bootstrap's CSS
 @import 'bootstrap/scss/bootstrap';
+$bootstrap-icons-font-dir: '~bootstrap-icons/font/fonts';
+@import '~bootstrap-icons/font/bootstrap-icons.scss';
 
 .features-body {
-  max-height: 400px;
+  max-height: 300px;
 }
 
 .project-container {
   overflow: hidden;
 }
 
-.card {
+.features-body > .card {
+  cursor: pointer;
+}
+
+.badge {
   cursor: pointer;
 }
 
 .task-card {
-  max-width: 250px;
+  max-width: 350px;
 }

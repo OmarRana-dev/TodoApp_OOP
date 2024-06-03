@@ -9,7 +9,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-console": "warn"
+    "no-console": "warn",
+    "import/no-default-export": "ignore"
   },
   "ignorePatterns": ["node_modules", "*.html"]
 }
