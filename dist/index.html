@@ -1,1 +1,271 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Todo WebApp</title><script defer="defer" src="main.js"></script></head><body><header><nav class="navbar bg-body-tertiary"><div class="container-fluid"><a class="navbar-brand" href="#">Choosify</a> <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span class="navbar-toggler-icon"></span></button></div></nav></header><div class="container py-1 px-1"><h1>The Todo WebApp</h1></div><div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions " aria-labelledby="offcanvasWithBothOptionsLabel"><div class="offcanvas-header"><h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Home</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div><div class="offcanvas-body"><div class="card my-2"><div class="p-2 card-body">All Tasks</div></div><div class="card"><div class="card-body">Today Tasks</div></div><div class="card"><div class="card-body">Weekly Tasks</div></div><div class="card"><div class="card-body">Completed Tasks</div></div></div></div></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Todo WebApp</title>
+    <link rel="icon" href="8a0ef8ce-b0d4-4093-a775-89734c565450.svg" />
+    <script defer="defer" src="bundle.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Choosify</a>
+          <button
+            class="btn btn-secondary"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <div
+      style="width: 250px"
+      class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Home</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body features-body">
+        <div class="card bg-secondary-subtle mt-3">
+          <div class="card-body p-2">All Tasks</div>
+        </div>
+        <div class="card bg-secondary-subtle mt-3">
+          <div class="card-body p-2">Today's Tasks</div>
+        </div>
+        <div class="card bg-secondary-subtle mt-3">
+          <div class="card-body p-2">Completed Tasks</div>
+        </div>
+        <div class="card bg-secondary-subtle mt-3">
+          <div class="card-body p-2">Important Tasks</div>
+        </div>
+      </div>
+      <div class="offcanvas-header d-flex justify-content-between">
+        <h5 class="offcanvas-title">Projects</h5>
+        <a
+          class="btn btn-primary"
+          data-bs-toggle="collapse"
+          href="#multiCollapseExample1"
+          role="button"
+          aria-expanded="false"
+          aria-controls="multiCollapseExample1"
+          ><i class="bi bi-folder-plus"></i
+        ></a>
+      </div>
+      <div class="offcanvas-body">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <form class="d-flex flex-column" id="project-form">
+            <div class="mb-2">
+              <input
+                class="form-control"
+                id="project-form-input"
+                placeholder="Enter Project Name"
+              />
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div id="projectListContainer">
+          <div
+            class="card bg-secondary-subtle mt-3 d-flex flex-row align-items-center shadow-sm"
+          >
+            <div class="p-2 card-body project-container text-truncate">
+              All Tasks helo are u happy with him
+            </div>
+            <button type="button" class="btn-close" aria-label="Close"></button>
+          </div>
+          <div
+            class="card bg-secondary-subtle mt-3 d-flex flex-row align-items-center shadow-sm"
+          >
+            <div class="p-2 card-body project-container text-truncate">
+              All Tasks helo are u happy with him
+            </div>
+            <button type="button" class="btn-close" aria-label="Close"></button>
+          </div>
+          <div
+            class="card bg-secondary-subtle mt-3 d-flex flex-row align-items-center shadow-sm"
+          >
+            <div class="p-2 card-body project-container text-truncate">
+              All Tasks helo are u happy with him
+            </div>
+            <button type="button" class="btn-close" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-column gap-3 align-items-center mx-3">
+      <h3 class="header">Task's</h3>
+      <div
+        class="d-flex flex-wrap gap-4 justify-content-center"
+        id="task-UI-container"
+      >
+        <div class="card task-card">
+          <div class="card-body">
+            <div class="topCard-row d-flex justify-content-between">
+              <h5 class="card-title">Card title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+              ></button>
+            </div>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <div
+              class="lowerCard-row d-flex justify-content-end flex-wrap gap-3"
+            >
+              <span class="badge text-bg-info">May 2</span>
+              <span class="badge text-bg-success">Important</span>
+              <span class="badge text-bg-danger">UnCompleted</span>
+            </div>
+          </div>
+        </div>
+        <div class="card task-card">
+          <div class="card-body">
+            <div class="topCard-row d-flex justify-content-between">
+              <h5 class="card-title">Card title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+              ></button>
+            </div>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <div
+              class="lowerCard-row d-flex justify-content-end flex-wrap gap-3"
+            >
+              <span class="badge text-bg-info">May 2</span>
+              <span class="badge text-bg-success">Important</span>
+              <span class="badge text-bg-danger">UnCompleted</span>
+            </div>
+          </div>
+        </div>
+        <div class="card task-card">
+          <div class="card-body">
+            <div class="topCard-row d-flex justify-content-between">
+              <h5 class="card-title">Card title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+              ></button>
+            </div>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <div
+              class="lowerCard-row d-flex justify-content-end flex-wrap gap-3"
+            >
+              <span class="badge text-bg-info">May 2</span>
+              <span class="badge text-bg-success">Important</span>
+              <span class="badge text-bg-danger">UnCompleted</span>
+            </div>
+          </div>
+        </div>
+        <div class="card task-card">
+          <div class="card-body">
+            <div class="topCard-row d-flex justify-content-between">
+              <h5 class="card-title">Card title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+              ></button>
+            </div>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <div
+              class="lowerCard-row d-flex justify-content-end flex-wrap gap-3"
+            >
+              <span class="badge text-bg-info">May 2</span>
+              <span class="badge text-bg-success">Important</span>
+              <span class="badge text-bg-danger">UnCompleted</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#multiCollapseExample2"
+        aria-expanded="false"
+        aria-controls="multiCollapseExample2"
+      >
+        Add Task
+      </button>
+      <div class="collapse multi-collapse" id="multiCollapseExample2">
+        <div class="card card-body">
+          <form class="row g-3" id="task-form">
+            <div class="col-md-6">
+              <label for="taskInputTitle" class="form-label">Title</label>
+              <input class="form-control" id="taskInputTitle" />
+            </div>
+            <div class="col-md-6">
+              <label for="selected-project" class="form-label">Project</label>
+              <select id="selected-project" class="form-select">
+                <option selected="selected">Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="taskInputDueDate" class="form-label">Due Date</label>
+              <input type="date" class="form-control" id="taskInputDueDate" />
+            </div>
+            <div class="col-md-12">
+              <label for="taskInputdescription" class="form-label"
+                >Discription</label
+              >
+              <textarea
+                class="form-control"
+                placeholder="Add Discription Here."
+                id="taskInputdescription"
+                style="height: 100px"
+              ></textarea>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="taskCheckBoxImportance"
+                />
+                <label class="form-check-label" for="taskCheckBoxImportance"
+                  >is it Important?</label
+                >
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

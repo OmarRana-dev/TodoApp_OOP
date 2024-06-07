@@ -11,65 +11,85 @@ import { ProjectManager } from './manager/projectManager';
 import { Project } from './models/project';
 import { Todo } from './models/todo.js';
 import { renderProject, renderTasks } from './services/rendreUI';
+import { editTaskStatus } from './services/editORdeleteTask';
 
 const addProject = () => {
-  const projectform = document.querySelector('#project-form');
+  const projectform = document.querySelector('form#project-form');
 
   const projectManager = new ProjectManager();
   projectform.addEventListener('submit', (e) => {
-    // e.preventDefault();
     e.stopPropagation();
-    const projectTitle = document
-      .querySelector('#project-form-input')
-      .value.trim();
 
-    const project = new Project(projectTitle);
-    projectManager.addProject(project);
+    try {
+      const projectTitle = document
+        .querySelector('#project-form-input')
+        .value.trim();
 
-    renderProject();
+      console.log(projectTitle);
+      const project = new Project(projectTitle);
+      projectManager.addProject(project);
+
+      renderProject();
+    } catch (error) {
+      console.error(error.message);
+    }
   });
 };
 
 const addTask = () => {
-  const taskForm = document.querySelector('#task-form');
+  const taskForm = document.querySelector('form#task-form');
 
+  // console.log(taskForm);
   const projectManager = new ProjectManager();
   taskForm.addEventListener('submit', (e) => {
     e.stopPropagation();
     // e.preventDefault();
 
-    const value = document.querySelector('#select-project').value;
-    const option = document.querySelector(`option[value='${value}']`);
-    const projectId = option.attributes.data.value;
+    try {
+      const value = document.querySelector('#select-project').value;
+      const option = document.querySelector(`option[value='${value}']`);
+      const projectId = option.attributes.data.value;
 
-    const taskTitle = document.querySelector('#task-title').value.trim();
-    const taskDescription = document
-      .querySelector('#task-description')
-      .value.trim();
-    const taskDue = document.querySelector('#task-due-date').value;
-    const taskImportance = document.querySelector('#task-importance').checked;
+      const taskTitle = document.querySelector('#taskInputTitle').value.trim();
+      const taskDescription = document
+        .querySelector('#taskInputdescription')
+        .value.trim();
+      const taskDue = document.querySelector('#taskInputDueDate').value;
+      const taskImportance = document.querySelector(
+        '#taskCheckBoxImportance',
+      ).checked;
 
-    // console.log(taskTitle);
-    // console.log(taskDescription);
-    // console.log(taskDue);
-    // console.log(taskImportance);
-
-    projectManager.addTaskToProject(
-      projectId,
-      taskTitle,
-      taskDescription,
-      taskDue,
-      taskImportance,
-    );
-    renderTasks();
+      projectManager.addTaskToProject(
+        projectId,
+        taskTitle,
+        taskDescription,
+        taskDue,
+        taskImportance,
+      );
+      console.log(taskTitle);
+      renderTasks();
+    } catch (error) {
+      console.error(error.message);
+    }
   });
 };
 
-document
-  .getElementById('add-project-btn')
-  .addEventListener('click', addProject);
-document.getElementById('add-task-btn').addEventListener('click', addTask);
+document.querySelector('#addProject-btn').addEventListener('click', addProject);
+document.querySelector('#addTask-btn').addEventListener('click', addTask);
 
 // Initial render
+console.log('helo');
 renderProject();
 renderTasks();
+
+const elements = document.querySelectorAll('.edit-isCompleted');
+// console.log(elements);
+elements.forEach((element) => {
+  element.addEventListener('click', () => {
+    // console.log(element.getAttribute('id'));
+    const project = new ProjectManager();
+    // console.log(project);
+    project.editTaskStatus(element.getAttribute('id'));
+    // editTaskStatus(element);
+  });
+});

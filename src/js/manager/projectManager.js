@@ -17,6 +17,7 @@ class ProjectManager {
   }
 
   getProjectByID(projectID) {
+    console.log(this.projects);
     return this.projects.find((project) => project.id === projectID);
   }
 
@@ -65,6 +66,40 @@ class ProjectManager {
     } catch (error) {
       console.error(error.message);
     }
+  }
+
+  editTaskStatus(Id) {
+    const [projectId, taskId] = Id.split('_');
+    const project = this.getProjectByID(projectId);
+
+    console.log(project);
+    console.log(project.todos);
+    // console.log(projectId);
+    // console.log(taskId);
+    const task = project.todos.find((todo) => todo.id === Id);
+
+    
+    // return ;
+    //   console.log(project);
+    //   if (!project) {
+    //     console.log('Project not found!');
+    //     return;
+    //   }
+
+    //   try {
+    //     const todo = new Todo(
+    //       project.id,
+    //       title,
+    //       description,
+    //       dueDate,
+    //       isImportant,
+    //       isCompleted,
+    //     );
+    //     project.todos.push(todo);
+    //     this.saveProjects();
+    //   } catch (error) {
+    //     console.error(error.message);
+    //   }
   }
 }
 

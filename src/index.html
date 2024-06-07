@@ -63,19 +63,18 @@
         <h5 class="offcanvas-title">Projects</h5>
         <a
           class="btn btn-primary"
-          id="add-project-btn"
           data-bs-toggle="collapse"
-          href="#collapseExample"
+          href="#multiCollapseExample1"
           role="button"
           aria-expanded="false"
-          aria-controls="collapseExample"
-        >
-          <i class="bi bi-folder-plus"></i>
-        </a>
+          aria-controls="multiCollapseExample1"
+          id="addProject-btn"
+          ><i class="bi bi-folder-plus"></i
+        ></a>
       </div>
       <div class="offcanvas-body">
         <!-- this is a collaps form container for porject -->
-        <div class="collapse" id="collapseExample">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
           <form class="d-flex flex-column" id="project-form">
             <div class="mb-2">
               <input
@@ -93,7 +92,7 @@
 
         <!-- Projects showing area -->
         <div id="projectListContainer">
-          <div
+          <!-- <div
             class="card bg-secondary-subtle mt-3 d-flex flex-row align-items-center shadow-sm"
           >
             <div class="p-2 card-body project-container text-truncate">
@@ -116,7 +115,7 @@
               All Tasks helo are u happy with him
             </div>
             <button type="button" class="btn-close" aria-label="Close"></button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -130,7 +129,7 @@
         class="d-flex flex-wrap gap-4 justify-content-center"
         id="task-UI-container"
       >
-        <div class="card task-card">
+        <!-- <div class="card task-card">
           <div class="card-body">
             <div class="topCard-row d-flex justify-content-between">
               <h5 class="card-title">Card title</h5>
@@ -211,82 +210,78 @@
             </div>
             <p class="card-text">
               With supporting text below as a natural lead-in to additional
-              content.
+              content. With supporting text below as a natural lead-in to
+              additional content.
             </p>
             <div
               class="lowerCard-row d-flex justify-content-end flex-wrap gap-3"
             >
               <span class="badge text-bg-info">May 2</span>
               <span class="badge text-bg-success">Important</span>
-              <span class="badge text-bg-danger">UnCompleted</span>
+              <span class="badge text-bg-secondary">UnCompleted</span>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- task form -->
-      <div class="collapse" id="collaps">
-        <form id="task-form">
-          <div class="mb-2">
-            <label for="select-project" class="col-form-label">Project:</label>
-            <select
-              class="form-select"
-              id="select-project"
-              aria-label="select a project where u want to add your task."
-            >
-              <option selected>Select Project...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="mb-2">
-            <label for="task-title" class="col-form-label">Task Title:</label>
-            <input type="text" class="form-control" id="task-title" />
-          </div>
-          <div class="mb-2">
-            <label for="task-due-date" class="col-form-label">Due Date:</label>
-            <input type="date" class="form-control" id="task-due-date" />
-          </div>
-          <div class="mb-2">
-            <label for="task-description" class="col-form-label"
-              >Task Description:</label
-            >
-            <textarea class="form-control" id="task-description"></textarea>
-          </div>
-          <div class="mb-2 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="task-importance"
-            />
-            <label class="form-check-label" for="task-importance"
-              >is Task Important!</label
-            >
-          </div>
-          <div class="text-end">
-            <button
-              type="close"
-              class="btn btn-secondary"
-              data-bs-toggle="close"
-            >
-              Close
-            </button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
+        </div> -->
       </div>
       <button
-        id="add-task-btn"
         class="btn btn-primary"
+        type="button"
+        id="addTask-btn"
         data-bs-toggle="collapse"
-        href="#collaps"
-        role="button"
+        data-bs-target="#multiCollapseExample2"
         aria-expanded="false"
-        aria-controls="collaps"
+        aria-controls="multiCollapseExample2"
       >
         Add Task
       </button>
+
+      <!-- task form -->
+      <div class="collapse multi-collapse" id="multiCollapseExample2">
+        <div class="card card-body">
+          <form class="row g-3" id="task-form">
+            <div class="col-md-6">
+              <label for="taskInputTitle" class="form-label">Title</label>
+              <input type="text" class="form-control" id="taskInputTitle" />
+            </div>
+            <div class="col-md-6">
+              <label for="select-project" class="form-label">Project</label>
+              <select id="select-project" class="form-select">
+                <option selected>Choose...</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="taskInputDueDate" class="form-label">Due Date</label>
+              <input type="date" class="form-control" id="taskInputDueDate" />
+            </div>
+            <div class="col-md-12">
+              <label for="taskInputdescription" class="form-label"
+                >Discription</label
+              >
+              <textarea
+                class="form-control"
+                placeholder="Add Discription Here."
+                id="taskInputdescription"
+                style="height: 100px"
+              ></textarea>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="taskCheckBoxImportance"
+                />
+                <label class="form-check-label" for="taskCheckBoxImportance">
+                  is it Important?
+                </label>
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

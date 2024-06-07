@@ -1,22 +1,19 @@
 import { ProjectManager } from '../manager/projectManager';
+import { DateValidator } from '../utils/dateValidator';
 
 const renderProject = () => {
   const projectManager = new ProjectManager();
-  // console.log(projectManager);
 
   const projectList = document.querySelector('#projectListContainer');
   projectList.innerHTML = '';
 
   const selectProjectOptions = document.querySelector('#select-project');
-  selectProjectOptions.innerHTML = '';
-
-  const optionElement = document.createElement('option');
-  optionElement.textContent = 'Select Project...';
-
-  selectProjectOptions.appendChild(optionElement);
+  selectProjectOptions.innerHTML =
+    '<option selected>Select Project...</option>';
 
   let optionValue = 0;
 
+  // console.log(projectManager);
   projectManager.projects.forEach((project) => {
     optionValue++;
 
@@ -53,9 +50,11 @@ const renderTasks = () => {
     project.todos.forEach((todo) => {
       const taskCardUpperBody = document.createElement('div');
       taskCardUpperBody.classList = 'card task-card';
+      taskCardUpperBody.setAttribute('data', todo.id);
 
       const cardBody = document.createElement('div');
-      cardBody.classList = 'card-body';
+      cardBody.classList =
+        'card-body d-flex flex-column justify-content-between';
 
       const cardTitleContainer = document.createElement('div');
       cardTitleContainer.classList =
@@ -79,17 +78,26 @@ const renderTasks = () => {
 
       const dueDateElement = document.createElement('span');
       dueDateElement.classList = 'badge text-bg-info';
-      dueDateElement.textContent = `Due: ${todo.dueDate}`;
+      dueDateElement.textContent = `Due Date: ${DateValidator.validateDate(todo.dueDate)}`;
 
       const isImportantElement = document.createElement('span');
-      isImportantElement.classList =
-        'badge text-bg-info edit-task-elements edit-isTaskImportant';
-      isImportantElement.textContent = todo.isImportant;
+      if (todo.isImportant) {
+        isImportantElement.classList = 'badge text-bg-warning';
+        isImportantElement.textContent = 'Priority: Urgent';
+      } else {
+        isImportantElement.classList = 'badge text-bg-secondary';
+        isImportantElement.textContent = 'Priority: Normal';
+      }
 
       const isCompleteElement = document.createElement('span');
-      isCompleteElement.classList =
-        'badge text-bg-info edit-task-elements edit-isCompleted';
-      isCompleteElement.textContent = todo.isCompleted;
+      isCompleteElement.setAttribute('id', todo.id);
+      if (todo.isCompleted) {
+        isCompleteElement.classList = 'badge text-bg-success edit-isCompleted';
+        isCompleteElement.textContent = 'Status: Done';
+      } else {
+        isCompleteElement.classList = 'badge text-bg-danger edit-isCompleted';
+        isCompleteElement.textContent = 'Status: Pending';
+      }
 
       cardTitleContainer.append(titleElement, closeBtnElement);
       badgesContainer.append(

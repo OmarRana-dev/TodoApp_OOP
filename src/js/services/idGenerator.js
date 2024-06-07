@@ -4,7 +4,7 @@ class IDGenerator {
   }
 
   static generateProjectID() {
-    return `P_${this.generateRandomID()}`;
+    return `${this.generateRandomID()}`;
   }
 
   static generateTaskID(projectID) {
