@@ -68,38 +68,33 @@ class ProjectManager {
     }
   }
 
-  editTaskStatus(Id) {
-    const [projectId, taskId] = Id.split('_');
-    const project = this.getProjectByID(projectId);
+  toggleTaskCompletion(taskID) {
+    const [projectID, unuse] = taskID.split('_');
+    const project = this.getProjectByID(projectID);
+    if (!project) {
+      console.log('Project not found!');
+      return;
+    }
 
-    console.log(project);
-    console.log(project.todos);
-    // console.log(projectId);
-    // console.log(taskId);
-    const task = project.todos.find((todo) => todo.id === Id);
+    const todo = project.getTodoByID(taskID);
+    if (!todo) {
+      console.log('Task not found!');
+      return;
+    }
 
-    
-    // return ;
-    //   console.log(project);
-    //   if (!project) {
-    //     console.log('Project not found!');
-    //     return;
-    //   }
+    todo.toggleCompletion();
+    this.saveProjects();
+    console.log(
+      `Task "${todo.title}" completion status toggled to ${todo.isCompleted ? 'Completed' : 'Pending'}.`,
+    );
+  }
 
-    //   try {
-    //     const todo = new Todo(
-    //       project.id,
-    //       title,
-    //       description,
-    //       dueDate,
-    //       isImportant,
-    //       isCompleted,
-    //     );
-    //     project.todos.push(todo);
-    //     this.saveProjects();
-    //   } catch (error) {
-    //     console.error(error.message);
-    //   }
+  removeTaskbyID(id) {
+    const projectID = id.split('_');
+    const project = this.getProjectByID(projectID[0]);
+    project.removeTodobyID(id);
+    this.saveProjects();
+    // console.log(project);
   }
 }
 

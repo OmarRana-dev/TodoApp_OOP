@@ -11,7 +11,15 @@ import { ProjectManager } from './manager/projectManager';
 import { Project } from './models/project';
 import { Todo } from './models/todo.js';
 import { renderProject, renderTasks } from './services/rendreUI';
-import { editTaskStatus } from './services/editORdeleteTask';
+import {
+  editTaskStatus,
+  deleteTask_UI,
+  deleteProject_UI,
+} from './services/editORdeleteTask';
+
+// Initial render
+renderProject();
+renderTasks();
 
 const addProject = () => {
   const projectform = document.querySelector('form#project-form');
@@ -77,19 +85,38 @@ const addTask = () => {
 document.querySelector('#addProject-btn').addEventListener('click', addProject);
 document.querySelector('#addTask-btn').addEventListener('click', addTask);
 
-// Initial render
-console.log('helo');
-renderProject();
-renderTasks();
-
 const elements = document.querySelectorAll('.edit-isCompleted');
-// console.log(elements);
 elements.forEach((element) => {
   element.addEventListener('click', () => {
-    // console.log(element.getAttribute('id'));
     const project = new ProjectManager();
-    // console.log(project);
-    project.editTaskStatus(element.getAttribute('id'));
-    // editTaskStatus(element);
+    project.toggleTaskCompletion(element.getAttribute('id'));
+    // console.log(
+    //   element.parentNode.parentElement.children[0].children[0].textContent,
+    // );
+    editTaskStatus(element);
+  });
+});
+
+document.querySelectorAll('.deleteTaskBtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const task = btn.parentElement.parentElement.parentElement;
+    const taskID = task.getAttribute('id');
+
+    const project = new ProjectManager();
+
+    project.removeTaskbyID(taskID);
+    deleteTask_UI(task);
+  });
+});
+
+document.querySelectorAll('.deleteProjectBtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const element = btn.parentElement;
+    const projectID = element.getAttribute('id');
+
+    const project = new ProjectManager();
+
+    project.removePorjectByID(projectID);
+    deleteProject_UI(element);
   });
 });

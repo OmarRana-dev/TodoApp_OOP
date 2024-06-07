@@ -26,13 +26,14 @@ const renderProject = () => {
     const projectElement = document.createElement('div');
     projectElement.classList =
       'card bg-secondary-subtle mt-3 d-flex flex-row align-items-center shadow-sm';
+    projectElement.setAttribute('id', project.id);
 
     const titleElement = document.createElement('div');
     titleElement.classList = 'p-2 card-body project-container text-truncate';
     titleElement.textContent = project.projectName;
 
     const projectCloseBtn = document.createElement('button');
-    projectCloseBtn.classList.add('btn-close');
+    projectCloseBtn.classList = 'btn-close deleteProjectBtn';
     projectCloseBtn.setAttribute('type', 'button');
 
     projectElement.append(titleElement, projectCloseBtn);
@@ -50,7 +51,7 @@ const renderTasks = () => {
     project.todos.forEach((todo) => {
       const taskCardUpperBody = document.createElement('div');
       taskCardUpperBody.classList = 'card task-card';
-      taskCardUpperBody.setAttribute('data', todo.id);
+      taskCardUpperBody.setAttribute('id', todo.id);
 
       const cardBody = document.createElement('div');
       cardBody.classList =
@@ -65,7 +66,7 @@ const renderTasks = () => {
       titleElement.textContent = todo.title;
 
       const closeBtnElement = document.createElement('button');
-      closeBtnElement.classList.add('btn-close');
+      closeBtnElement.classList = 'btn-close deleteTaskBtn';
       closeBtnElement.setAttribute('type', 'button');
 
       const descriptionElement = document.createElement('p');
