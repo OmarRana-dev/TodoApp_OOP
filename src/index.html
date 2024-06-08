@@ -82,6 +82,7 @@
               <input
                 type="text"
                 class="form-control"
+                autocomplete="off"
                 id="project-form-input"
                 placeholder="Enter Project Name"
               />
@@ -98,7 +99,7 @@
     </div>
 
     <!-- Tasks container -->
-    <div class="d-flex flex-column gap-3 align-items-center mx-3">
+    <div class="d-flex flex-column gap-3 align-items-center mx-3 mb-2">
       <h3 class="header">Task's</h3>
 
       <!-- inner task container -->
@@ -124,7 +125,12 @@
           <form class="row g-3" id="task-form">
             <div class="col-md-6">
               <label for="taskInputTitle" class="form-label">Title</label>
-              <input type="text" class="form-control" id="taskInputTitle" />
+              <input
+                type="text"
+                class="form-control"
+                autocomplete="off"
+                id="taskInputTitle"
+              />
             </div>
             <div class="col-md-6">
               <label for="select-project" class="form-label">Project</label>

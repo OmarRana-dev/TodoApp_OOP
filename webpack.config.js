@@ -3,7 +3,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     index: './src/js/main.js',
   },
@@ -18,6 +18,11 @@ module.exports = {
     port: 3000,
     open: true,
     hot: true,
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
   plugins: [
     new HtmlWebpackPlugin({
