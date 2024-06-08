@@ -3,14 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo WebApp</title>
+    <title>TaskTrek WebApp</title>
   </head>
   <body>
     <!-- Header Section -->
     <header>
       <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Choosify</a>
+          <a class="navbar-brand" href="#">
+            <h1 class="font-monospace fs-2 taskLogo"><s>Task</s>Trek</h1>
+          </a>
           <button
             class="btn btn-secondary"
             type="button"
@@ -45,16 +47,16 @@
       </div>
       <div class="offcanvas-body features-body">
         <div class="card bg-secondary-subtle mt-3">
-          <div class="card-body p-2">All Tasks</div>
+          <div class="card-body p-2" id="allTasks">All Tasks</div>
         </div>
         <div class="card bg-secondary-subtle mt-3">
-          <div class="card-body p-2">Today's Tasks</div>
+          <div class="card-body p-2" id="todaysTasks">Today's Tasks</div>
         </div>
         <div class="card bg-secondary-subtle mt-3">
-          <div class="card-body p-2">Completed Tasks</div>
+          <div class="card-body p-2" id="completedTasks">Completed Tasks</div>
         </div>
         <div class="card bg-secondary-subtle mt-3">
-          <div class="card-body p-2">Important Tasks</div>
+          <div class="card-body p-2" id="importantTasks">Important Tasks</div>
         </div>
       </div>
 
@@ -91,32 +93,7 @@
         </div>
 
         <!-- Projects showing area -->
-        <div id="projectListContainer">
-          <!-- <div
-            class="card bg-secondary-subtle mt-3 d-flex flex-row align-items-center shadow-sm"
-          >
-            <div class="p-2 card-body project-container text-truncate">
-              All Tasks helo are u happy with him
-            </div>
-            <button type="button" class="btn-close" aria-label="Close"></button>
-          </div>
-          <div
-            class="card bg-secondary-subtle mt-3 d-flex flex-row align-items-center shadow-sm"
-          >
-            <div class="p-2 card-body project-container text-truncate">
-              All Tasks helo are u happy with him
-            </div>
-            <button type="button" class="btn-close" aria-label="Close"></button>
-          </div>
-          <div
-            class="card bg-secondary-subtle mt-3 d-flex flex-row align-items-center shadow-sm"
-          >
-            <div class="p-2 card-body project-container text-truncate">
-              All Tasks helo are u happy with him
-            </div>
-            <button type="button" class="btn-close" aria-label="Close"></button>
-          </div> -->
-        </div>
+        <div id="projectListContainer"></div>
       </div>
     </div>
 
@@ -128,101 +105,7 @@
       <div
         class="d-flex flex-wrap gap-4 justify-content-center"
         id="task-UI-container"
-      >
-        <!-- <div class="card task-card">
-          <div class="card-body">
-            <div class="topCard-row d-flex justify-content-between">
-              <h5 class="card-title">Card title</h5>
-              <button
-                type="button"
-                class="btn-close"
-                aria-label="Close"
-              ></button>
-            </div>
-            <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </p>
-            <div
-              class="lowerCard-row d-flex justify-content-end flex-wrap gap-3"
-            >
-              <span class="badge text-bg-info">May 2</span>
-              <span class="badge text-bg-success">Important</span>
-              <span class="badge text-bg-danger">UnCompleted</span>
-            </div>
-          </div>
-        </div>
-        <div class="card task-card">
-          <div class="card-body">
-            <div class="topCard-row d-flex justify-content-between">
-              <h5 class="card-title">Card title</h5>
-              <button
-                type="button"
-                class="btn-close"
-                aria-label="Close"
-              ></button>
-            </div>
-            <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </p>
-            <div
-              class="lowerCard-row d-flex justify-content-end flex-wrap gap-3"
-            >
-              <span class="badge text-bg-info">May 2</span>
-              <span class="badge text-bg-success">Important</span>
-              <span class="badge text-bg-danger">UnCompleted</span>
-            </div>
-          </div>
-        </div>
-        <div class="card task-card">
-          <div class="card-body">
-            <div class="topCard-row d-flex justify-content-between">
-              <h5 class="card-title">Card title</h5>
-              <button
-                type="button"
-                class="btn-close"
-                aria-label="Close"
-              ></button>
-            </div>
-            <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </p>
-            <div
-              class="lowerCard-row d-flex justify-content-end flex-wrap gap-3"
-            >
-              <span class="badge text-bg-info">May 2</span>
-              <span class="badge text-bg-success">Important</span>
-              <span class="badge text-bg-danger">UnCompleted</span>
-            </div>
-          </div>
-        </div>
-        <div class="card task-card">
-          <div class="card-body">
-            <div class="topCard-row d-flex justify-content-between">
-              <h5 class="card-title">Card title</h5>
-              <button
-                type="button"
-                class="btn-close"
-                aria-label="Close"
-              ></button>
-            </div>
-            <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content. With supporting text below as a natural lead-in to
-              additional content.
-            </p>
-            <div
-              class="lowerCard-row d-flex justify-content-end flex-wrap gap-3"
-            >
-              <span class="badge text-bg-info">May 2</span>
-              <span class="badge text-bg-success">Important</span>
-              <span class="badge text-bg-secondary">UnCompleted</span>
-            </div>
-          </div>
-        </div> -->
-      </div>
+      ></div>
       <button
         class="btn btn-primary"
         type="button"

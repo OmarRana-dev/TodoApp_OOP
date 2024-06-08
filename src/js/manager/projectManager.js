@@ -17,24 +17,11 @@ class ProjectManager {
   }
 
   getProjectByID(projectID) {
-    console.log(this.projects);
     return this.projects.find((project) => project.id === projectID);
   }
 
   saveProjects() {
     LocalStorageService.saveData(this.projects);
-  }
-
-  displayProject() {
-    console.log('Projects:');
-    this.projects.forEach((project) => {
-      console.log(`- ${project.projectName}`);
-      project.todos.forEach((todo) => {
-        console.log(
-          `  - ${todo.title} [${todo.isCompleted ? 'Completed' : 'Pending'}]`,
-        );
-      });
-    });
   }
 
   addTaskToProject(
@@ -70,6 +57,7 @@ class ProjectManager {
 
   toggleTaskCompletion(taskID) {
     const [projectID, unuse] = taskID.split('_');
+    console.log(projectID);
     const project = this.getProjectByID(projectID);
     if (!project) {
       console.log('Project not found!');
@@ -94,8 +82,35 @@ class ProjectManager {
     const project = this.getProjectByID(projectID[0]);
     project.removeTodobyID(id);
     this.saveProjects();
-    // console.log(project);
   }
 }
 
-export { ProjectManager };
+class Sorting extends ProjectManager {
+  constructor() {
+    super();
+  }
+
+  getTodayTasks = () => {
+    const today = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
+    return this.projects.map((project) => ({
+      ...project,
+      todos: project.todos.filter((todo) => todo.dueDate === today),
+    }));
+  };
+
+  getCompletedTasks = () => {
+    return this.projects.map((project) => ({
+      ...project,
+      todos: project.todos.filter((todo) => todo.isCompleted),
+    }));
+  };
+
+  getImportantTasks = () => {
+    return this.projects.map((project) => ({
+      ...project,
+      todos: project.todos.filter((todo) => todo.isImportant),
+    }));
+  };
+}
+
+export { ProjectManager, Sorting };
