@@ -1,5 +1,4 @@
 import { IDGenerator } from '../services/idGenerator';
-import { Todo } from './todo';
 
 class Project {
   constructor(projectName) {

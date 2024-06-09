@@ -24,7 +24,7 @@ const renderProject = () => {
 
     const projectElement = document.createElement('div');
     projectElement.classList =
-      'card bg-secondary-subtle mt-3 d-flex flex-row align-items-center shadow-sm projectsElement';
+      'card mt-3 d-flex flex-row align-items-center projectsElement';
     projectElement.setAttribute('id', project.id);
 
     const titleElement = document.createElement('div');

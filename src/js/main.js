@@ -20,6 +20,7 @@ import {
 renderProject();
 renderTasks();
 
+// project from
 const addProject = () => {
   const projectform = document.querySelector('form#project-form');
 
@@ -41,6 +42,7 @@ const addProject = () => {
   });
 };
 
+// task form
 const addTask = () => {
   const taskForm = document.querySelector('form#task-form');
 
@@ -146,7 +148,7 @@ document.querySelector('#allTasks').addEventListener('click', () => {
 });
 
 document.querySelectorAll('.projectsElement').forEach((element) => {
-  element.addEventListener('click', (e) => {
+  element.addEventListener('click', () => {
     const id = element.getAttribute('id');
 
     const projects = new ProjectManager();
